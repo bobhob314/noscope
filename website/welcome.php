@@ -21,7 +21,7 @@
         <link rel="stylesheet" href="css/responsive.css">
     </head>
     <body>
-        
+
         <!--================Header Menu Area =================-->
         <header class="header_area">
           <div class="main_menu">
@@ -35,47 +35,44 @@
             </nav>
 	  </div>
 	</header>
-	<!--================Header Menu Area =================-->
 
 
 
 
-
-
-
-
-	
 	<!--================Home Banner Area =================-->
         <section class="home_banner_area">
           <div class="container box_1620">
 
-	    <div class="h_centered">
-		NOSCOPE
-	    </div>
-	   
-	      <div class="sd">
-		<form method="post" action="welcome.php"> <br>
-  		  Username: <input type="text" style="display: table; margin: 0 auto; padding-bottom: 0px;" name="username" ><br><br>
-  		  Password: <input type="password" style="display: table; margin: 0 auto; padding-bottom: 0px;" name="password"><br><br>
-  		  <input type="submit" value="LOGIN" style="display: table; margin: 0 auto;"/>
-		</form> 
-	      </div>
-	  </div>
-	  
+	    Please enter your information below:
+	    <input type="file" name="fileupload" value="fileupload" id="fileupload">
+	    <table style="width:100%">
+	  <tr>
+	    <th>Firstname</th>
+	    <th>Lastname</th> 
+	    <th>Age</th>
+	  </tr>
+	  <tr>
+	    <td>Jill</td>
+	    <td>Smith</td>
+	    <td>50</td>
+	  </tr>
+	  <tr>
+	    <td>Eve</td>
+	    <td>Jackson</td>
+	    <td>94</td>
+	  </tr>
+	  <tr>
+	    <td>John</td>
+	    <td>Doe</td>
+	    <td>80</td>
+	  </tr>
+	</table>
+
+
 	</section>
-        <!--================End Home Banner Area =================-->
 
 
 
-
-
-
-
-
-
-
-
-	
         <!--================Footer Area =================-->
         <footer class="footer_area p_120">
         	<div class="container">
@@ -86,14 +83,14 @@
         						<h3>More About Noscope</h3>
         					</div>
         					<p>Noscope was created by a couple of hackers in order to solve property damage and retail issues. </p>
-        					
+
         				</aside>
         			</div>
         		</div>
         	</div>
         </footer>
         <!--================End Footer Area =================-->
-        
-       
+
+
     </body>
 </html>
