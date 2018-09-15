@@ -1,4 +1,4 @@
-from bottle import Bottle, route, run
+from bottle import Bottle, route, run, error
 from bottle import template, request, get, post, static_file
 
 @route('/')
@@ -16,6 +16,15 @@ def login():
 def check_login(username, password):
     return True
 
+@route('/<filename:path>')
+def server_static(filename):
+    return static_file(filename, root='./website')
+
+@route('/<page>')
+def server_static(filename):
+    print('{{page}}')
+    return static_file(filename, root='./website/{{page}}')
+
 @post('/login')
 def do_login():
     username = request.forms.get('username')
@@ -24,5 +33,9 @@ def do_login():
         return "<p>Your login information was correct.</p>"
     else:
         return "<p>Login failed.</p>"
+
+@route('/test')
+def test():
+    return static_file('index.html', './website')
 
 run(host='localhost', port=8080, debug=True)
