@@ -4,21 +4,21 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="icon" href="img/logo.png" type="image/png">
+        <link rel="icon" href="/static/img/logo.png" type="image/png">
         <title>Noscope</title>
         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="css/bootstrap.css">
-        <link rel="stylesheet" href="vendors/linericon/style.css">
-        <link rel="stylesheet" href="css/font-awesome.min.css">
-        <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
-        <link rel="stylesheet" href="vendors/lightbox/simpleLightbox.css">
-        <link rel="stylesheet" href="vendors/nice-select/css/nice-select.css">
-        <link rel="stylesheet" href="vendors/animate-css/animate.css">
-        <link rel="stylesheet" href="vendors/popup/magnific-popup.css">
-        <link rel="stylesheet" href="vendors/flaticon/flaticon.css">
+        <link rel="stylesheet" href="/static/css/bootstrap.css">
+        <link rel="stylesheet" href="/static/vendors/linericon/style.css">
+        <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/static/vendors/owl-carousel/owl.carousel.min.css">
+        <link rel="stylesheet" href="/static/vendors/lightbox/simpleLightbox.css">
+        <link rel="stylesheet" href="/static/vendors/nice-select/css/nice-select.css">
+        <link rel="stylesheet" href="/static/vendors/animate-css/animate.css">
+        <link rel="stylesheet" href="/static/vendors/popup/magnific-popup.css">
+        <link rel="stylesheet" href="/static/vendors/flaticon/flaticon.css">
         <!-- main css -->
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/responsive.css">
+        <link rel="stylesheet" href="/static/css/style.css">
+        <link rel="stylesheet" href="/static/css/responsive.css">
 
         <style>
         .container {
@@ -36,17 +36,42 @@
         .container label {
           display: table-cell;
         }
+
+        input {
+          display: inline-block;
+          -webkit-box-sizing: content-box;
+          -moz-box-sizing: content-box;
+          box-sizing: content-box;
+          padding: 10px 20px;
+          border: 1px solid #b7b7b7;
+          -webkit-border-radius: 3px;
+          border-radius: 3px;
+          font: normal 16px/normal "Times New Roman", Times, serif;
+          color: rgba(0,142,198,1);
+          -o-text-overflow: clip;
+          text-overflow: clip;
+          background: rgba(252,252,252,1);
+          -webkit-box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.2) ;
+          box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.2) ;
+          text-shadow: 1px 1px 0 rgba(255,255,255,0.66) ;
+          -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+          -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+          -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+          transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+        }
         </style>
     </head>
     <body>
-
+        <?php
+        echo getcwd()
+        ?>
         <!--================Header Menu Area =================-->
         <header class="header_area">
           <div class="main_menu">
             <nav class="navbar navbar-expand-lg navbar-light">
 	      <div class="container box_1620">
 		<!-- Brand and toggle get grouped for better mobile display -->
-		<a class="navbar-brand logo_h" href="index.html"><img src="img/logo.png" width="50%" height="50%" alt=""></a>
+		<a class="navbar-brand logo_h" href=""><img src="/static/img/logo.png" width="50%" height="50%" alt=""></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		</button>
 	      </div>
@@ -73,7 +98,7 @@
 
 	  <div class="sd" style="float: none; height:100%; margin:auto; width:500px; border:2px solid;padding:20px;border-radius:20px">
       <div class="container">
-    		<form method="post" action="welcome.php" style="display:table">
+    		<form method="get" action="welcome.php" style="display:table">
             <p>
       		    <label for="username">Username: </label>
               <input id="username" type="text" style="margin: 0 auto; padding-bottom: 0px;" name="username" >
