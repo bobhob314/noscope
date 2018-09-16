@@ -65,8 +65,8 @@ DELTA_THRESHOLD = 500 # only show matches if above delta (movement) THRESHOLDS
 # show all things in kp1 that aren't matched, kp2 that aren't matched.
 
 # left matches, right matches
-left_matches = set()
-right_matches = set()
+left_matches = dict()
+right_matches = dict()
 print(len(kp1), len(kp2))
 
 def dist(p0, p1):
@@ -78,8 +78,8 @@ for match in matches:  # It seems matches is capped at 500
 
     #if (dist(kp1[match.queryIdx].pt, kp2[match.trainIdx].pt)> DELTA_THRESHOLD): # !! technically should check, add all here. later if not in add to not in. THEN if distance hi, add.
     #print(kp1[match.queryIdx].pt, kp2[match.trainIdx].pt, dist(kp1[match.queryIdx].pt, kp2[match.trainIdx].pt))
-    left_matches.add(kp1[match.queryIdx].pt[0])
-    right_matches.add(kp2[match.trainIdx].pt[0])
+    left_matches[kp1[match.queryIdx].pt] = match
+    right_matches[kp2[match.trainIdx].pt] = match
 
 #for item in kp1:
 #    cv2.circle(img3, tuple(map(int, item.pt)), 10, (180, 180, 100), 1)
@@ -92,9 +92,14 @@ for ob in kp1:
     pt = (int(ob.pt[0]), int(ob.pt[1]))
     if pt not in left_matches:
         left_count[pt[0]//100][pt[1]//100] += 1
+    elif pt in left_matches and dist(pt, kp2[left_matches[pt]].pt):
+        left_count[pt[0]//100][pt[1]//100] += 1
+
 for ob in kp2:
     pt = (int(ob.pt[0]), int(ob.pt[1]))
     if pt not in right_matches:
+        right_count[(pt[0])//100][(pt[1])//100] += 1
+    elif pt in right_matches and dist(pt, kp1[right_matches[pt]].pt):
         right_count[(pt[0])//100][(pt[1])//100] += 1
 
 
