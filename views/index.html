@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" href="/static/img/logo.png" type="image/png">
-        <title>Noscope</title>
+        <title>Login</title>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="/static/css/bootstrap.css">
         <link rel="stylesheet" href="/static/vendors/linericon/style.css">
@@ -66,18 +66,21 @@
         echo getcwd()
         ?>
         <!--================Header Menu Area =================-->
-        <header class="header_area">
-          <div class="main_menu">
-            <nav class="navbar navbar-expand-lg navbar-light">
-	      <div class="container box_1620">
-		<!-- Brand and toggle get grouped for better mobile display -->
-		<a class="navbar-brand logo_h" href=""><img src="/static/img/logo.png" width="50%" height="50%" alt=""></a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-		</button>
-	      </div>
-            </nav>
-	  </div>
-	</header>
+        <body>
+
+          <header class="header_area">
+            <!--<div class="main_menu">
+              <nav class="navbar navbar-expand-lg navbar-light">
+          <div class="container box_1620">-->
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <a class="navbar-brand logo_h" href="/views/index.html"><img src="/static/img/logo.png" width="50%" height="50%" alt=""></a>
+          <br /><br />
+          <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          </button>
+          </div>
+              </nav>
+          </div> -->
+          </header>
 	<!--================Header Menu Area =================-->
 
 
@@ -98,7 +101,8 @@
 
 	  <div class="sd" style="float: none; height:100%; margin:auto; width:500px; border:2px solid;padding:20px;border-radius:20px">
       <div class="container">
-    		<form method="get" action="welcome.php" style="display:table">
+        <!-- NOTE HARDCODED -->
+    		<form method="get" action="http://localhost:3000/welcome.php" style="display:table">
             <p>
       		    <label for="username">Username: </label>
               <input id="username" type="text" style="margin: 0 auto; padding-bottom: 0px;" name="username" >
