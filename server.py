@@ -18,7 +18,7 @@ def index():
 def static_server(filepath):
     return static_file(filepath, root='./static/')
 
-@FILE_API.get('/welcome')
+@FILE_API.get('/welcome.php')
 def welcome():
     return template('welcome.php')
     # return template('welcome.php')

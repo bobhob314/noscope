@@ -27,7 +27,9 @@
 
           }
         </script>
+        <style>
 
+        </style>
 
     </head>
     <body>
@@ -67,11 +69,21 @@
             <h1>After</h1>
             <input type="file" name="fileupload" value="fileupload" id="fileupload">
           </td>
+          <td colspan="2">
+                <button type="button" name="button">Compare</button>
+          </td>
+    	  </tr>
+        <tr>
+    	    <td valign="top">
+            <img src="./../static/img/gallery/portfolio_details.jpg" alt="Before">
+          </td>
+          <td align="left" valign="top">
+            <input type="file" name="fileupload" value="fileupload" id="fileupload">
+          </td>
     	  </tr>
       </tbody>
 	  </table>
 
-    <button type="button" name="button">Compare</button>
 
 
   </div>
