@@ -19,9 +19,27 @@
         <!-- main css -->
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/responsive.css">
+
+        <style>
+        .container {
+        }
+
+        .container p {
+          margin-top: 100px;
+          display: table-row;
+        }
+
+        .container input {
+          display: table-cell;
+        }
+
+        .container label {
+          display: table-cell;
+        }
+        </style>
     </head>
     <body>
-        
+
         <!--================Header Menu Area =================-->
         <header class="header_area">
           <div class="main_menu">
@@ -44,7 +62,7 @@
 
 
 
-	
+
 	<!--================Home Banner Area =================-->
         <section class="home_banner_area">
           <div class="container box_1620">
@@ -52,16 +70,28 @@
 	    <div class="h_centered">
 		NOSCOPE
 	    </div>
-	   
-	      <div class="sd">
-		<form method="post" action="welcome.php"> <br>
-  		  Username: <input type="text" style="display: table; margin: 0 auto; padding-bottom: 0px;" name="username" ><br><br>
-  		  Password: <input type="password" style="display: table; margin: 0 auto; padding-bottom: 0px;" name="password"><br><br>
-  		  <input type="submit" value="LOGIN" style="display: table; margin: 0 auto;"/>
-		</form> 
-	      </div>
+
+	  <div class="sd" style="float: none; height:100%; margin:auto; width:500px; border:2px solid;padding:20px;border-radius:20px">
+      <div class="container">
+    		<form method="post" action="welcome.php" style="display:table">
+            <p>
+      		    <label for="username">Username: </label>
+              <input id="username" type="text" style="margin: 0 auto; padding-bottom: 0px;" name="username" >
+            </p>
+            <br>
+            <p>
+              <label for="pass">Password: </label>
+              <input id="pass" type="password" style="margin: 0 auto; padding-bottom: 0px;" name="password">
+            </p>
+            <br>
+            <p>
+      		    <input type="submit" value="LOGIN" style="display: table-row;"/>
+            </p>
+    		</form>
+      </div>
 	  </div>
-	  
+	  </div>
+
 	</section>
         <!--================End Home Banner Area =================-->
 
@@ -75,7 +105,7 @@
 
 
 
-	
+
         <!--================Footer Area =================-->
         <footer class="footer_area p_120">
         	<div class="container">
@@ -86,14 +116,14 @@
         						<h3>More About Noscope</h3>
         					</div>
         					<p>Noscope was created by a couple of hackers in order to solve property damage and retail issues. </p>
-        					
+
         				</aside>
         			</div>
         		</div>
         	</div>
         </footer>
         <!--================End Footer Area =================-->
-        
-       
+
+
     </body>
 </html>

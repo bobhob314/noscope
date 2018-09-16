@@ -19,6 +19,14 @@
         <!-- main css -->
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/responsive.css">
+
+        <script>
+          window.onload = function () {
+            // check if the user does not have a "before"
+            // image yet. If they don't, show the fileupload option.
+            
+          }
+        </script>
     </head>
     <body>
 
@@ -40,35 +48,31 @@
 
 
 	<!--================Home Banner Area =================-->
-        <section class="home_banner_area">
-          <div class="container box_1620">
-
-	    Please enter your information below:
-	    <input type="file" name="fileupload" value="fileupload" id="fileupload">
-	    <table style="width:100%">
-	  <tr>
-	    <th>Firstname</th>
-	    <th>Lastname</th> 
-	    <th>Age</th>
-	  </tr>
-	  <tr>
-	    <td>Jill</td>
-	    <td>Smith</td>
-	    <td>50</td>
-	  </tr>
-	  <tr>
-	    <td>Eve</td>
-	    <td>Jackson</td>
-	    <td>94</td>
-	  </tr>
-	  <tr>
-	    <td>John</td>
-	    <td>Doe</td>
-	    <td>80</td>
-	  </tr>
-	</table>
+  <section class="home_banner_area">
+    <div class="container box_1620" style="text-align:center">
 
 
+
+
+	  <table id="main_table" style="width:100%; text-align:left">
+      <tbody>
+    	  <tr>
+    	    <td valign="top">
+            <h1>Before</h1>
+            <img src="./../img/gallery/portfolio_details.jpg" alt="Before">
+          </td>
+          <td align="left" valign="top">
+            <h1>After</h1>
+            <input type="file" name="fileupload" value="fileupload" id="fileupload">
+          </td>
+    	  </tr>
+      </tbody>
+	  </table>
+
+    <button type="button" name="button">Compare</button>
+
+
+  </div>
 	</section>
 
 
