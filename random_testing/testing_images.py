@@ -15,7 +15,7 @@ def upload():
     print(type(request.files.get('image')))
     image = request.files.get('image')
     filename = image.filename
-    file_id = GRID_FS.put(image.file, file_name=file_name)
+    file_id = GRID_FS.put(image.file, file_name=filename)
     # If the file is found in the database then the save
     # was successful else an error occurred while saving.
     if GRID_FS.find_one(file_id) is not None:
@@ -25,6 +25,19 @@ def upload():
         return json.dumps({'status': 'Error occurred while saving file.'})
 
 @FILE_API.get('/download/<filename>')
+def download(filename):
+    print (filename)
+    grid_fs_file = GRID_FS.find_one({'file_name': filename})
+    response.headers['Content-Type'] = 'application/octet-stream'
+    response.headers["Content-Disposition"] = "attachment; filename={}".format(filename)
+    print(type(grid_fs_file))
+    if grid_fs_file:
+        print ("Found the file !!!")
+    else:
+        print ("Sadlife")
+    return grid_fs_file
+
+@FILE_API.get('/users/')
 def download(filename):
     print (filename)
     grid_fs_file = GRID_FS.find_one({'file_name': filename})
