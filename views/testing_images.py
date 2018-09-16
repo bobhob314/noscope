@@ -35,13 +35,4 @@ def upload():
         response.status = 500
         return json.dumps({'status': 'Error occurred while saving file.'})
 
-@FILE_API.get('/')
-def index():
-    return template('index')
-
-@route('/static/<filepath:path>')
-def server_static(filepath):
-    return static_file(filepath, root='/views')
-
-
 run(app=FILE_API, host='localhost', port=3000)

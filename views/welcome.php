@@ -7,26 +7,18 @@
         <link rel="icon" href="img/logo.png" type="image/png">
         <title>Noscope</title>
         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="css/bootstrap.css">
-        <link rel="stylesheet" href="vendors/linericon/style.css">
-        <link rel="stylesheet" href="css/font-awesome.min.css">
-        <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
-        <link rel="stylesheet" href="vendors/lightbox/simpleLightbox.css">
-        <link rel="stylesheet" href="vendors/nice-select/css/nice-select.css">
-        <link rel="stylesheet" href="vendors/animate-css/animate.css">
-        <link rel="stylesheet" href="vendors/popup/magnific-popup.css">
-        <link rel="stylesheet" href="vendors/flaticon/flaticon.css">
+        <link rel="stylesheet" href="/static/css//bootstrap.css">
+        <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/static/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="/static/css/simpleLightbox.css">
+        <link rel="stylesheet" href="/static/css/nice-select.css">
+        <link rel="stylesheet" href="/static/css/animate-css/animate.css">
+        <link rel="stylesheet" href="/static/css/magnific-popup.css">
+        <link rel="stylesheet" href="/static/css/flaticon.css">
         <!-- main css -->
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/responsive.css">
+        <link rel="stylesheet" href="/static/css/style.css">
+        <link rel="stylesheet" href="/static/css/responsive.css">
 
-        <script>
-          window.onload = function () {
-            // check if the user does not have a "before"
-            // image yet. If they don't, show the fileupload option.
-            
-          }
-        </script>
     </head>
     <body>
 
