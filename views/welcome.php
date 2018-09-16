@@ -4,29 +4,33 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="icon" href="img/logo.png" type="image/png">
+        <link rel="icon" href="/static/img/logo.png" type="image/png">
         <title>Noscope</title>
         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="css/bootstrap.css">
-        <link rel="stylesheet" href="vendors/linericon/style.css">
-        <link rel="stylesheet" href="css/font-awesome.min.css">
-        <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
-        <link rel="stylesheet" href="vendors/lightbox/simpleLightbox.css">
-        <link rel="stylesheet" href="vendors/nice-select/css/nice-select.css">
-        <link rel="stylesheet" href="vendors/animate-css/animate.css">
-        <link rel="stylesheet" href="vendors/popup/magnific-popup.css">
-        <link rel="stylesheet" href="vendors/flaticon/flaticon.css">
+        <link rel="stylesheet" href="/static/css/bootstrap.css">
+        <link rel="stylesheet" href="/static/vendors/linericon/style.css">
+        <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/static/vendors/owl-carousel/owl.carousel.min.css">
+        <link rel="stylesheet" href="/static/vendors/lightbox/simpleLightbox.css">
+        <link rel="stylesheet" href="/static/vendors/nice-select/css/nice-select.css">
+        <link rel="stylesheet" href="/static/vendors/animate-css/animate.css">
+        <link rel="stylesheet" href="/static/vendors/popup/magnific-popup.css">
+        <link rel="stylesheet" href="/static/vendors/flaticon/flaticon.css">
         <!-- main css -->
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/responsive.css">
+        <link rel="stylesheet" href="/static/css/style.css">
+        <link rel="stylesheet" href="/static/css/responsive.css">
 
         <script>
           window.onload = function () {
             // check if the user does not have a "before"
             // image yet. If they don't, show the fileupload option.
-            
+
           }
         </script>
+        <style>
+
+        </style>
+
     </head>
     <body>
 
@@ -36,7 +40,7 @@
             <nav class="navbar navbar-expand-lg navbar-light">
 	      <div class="container box_1620">
 		<!-- Brand and toggle get grouped for better mobile display -->
-		<a class="navbar-brand logo_h" href="index.html"><img src="img/logo.png" width="50%" height="50%" alt=""></a>
+		<a class="navbar-brand logo_h" href="index.html"><img src="/static/img/logo.png" width="50%" height="50%" alt=""></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		</button>
 	      </div>
@@ -59,17 +63,27 @@
     	  <tr>
     	    <td valign="top">
             <h1>Before</h1>
-            <img src="./../img/gallery/portfolio_details.jpg" alt="Before">
+            <img src="./../static/img/gallery/portfolio_details.jpg" alt="Before">
           </td>
           <td align="left" valign="top">
             <h1>After</h1>
+            <input type="file" name="fileupload" value="fileupload" id="fileupload">
+          </td>
+          <td colspan="2">
+                <button type="button" name="button">Compare</button>
+          </td>
+    	  </tr>
+        <tr>
+    	    <td valign="top">
+            <img src="./../static/img/gallery/portfolio_details.jpg" alt="Before">
+          </td>
+          <td align="left" valign="top">
             <input type="file" name="fileupload" value="fileupload" id="fileupload">
           </td>
     	  </tr>
       </tbody>
 	  </table>
 
-    <button type="button" name="button">Compare</button>
 
 
   </div>
