@@ -31,11 +31,22 @@ kp2, des2 = sift.detectAndCompute(gray2,None)
 #img2=cv2.drawKeypoints(gray2,kp2,img2,flags=cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
 #cv2.imwrite('2sift_keypoints2.jpg',img2) # kinda repeated. here and above.
 
+SIZE_BOUND = 50 - 50  # TODO!!!! IF I CHANGE THIS SIZE MAYBE THERE WILL BE CORRESPONDING TINGS
 print(len(kp1), len(kp2))
-average_features = (len(kp1)+len(kp2))//2
+cnt1 = 0
+cnt2 = 0
+
+for ob in kp1:
+    if ob.size >= SIZE_BOUND:
+        cnt1 += 1
+for ob in kp2:
+    if ob.size >= SIZE_BOUND:
+        cnt2 += 1
+print(cnt1, cnt2)
+average_features = (cnt1+cnt2)//2
 COUNT_THRESHOLD = average_features//300 # pretty sure should be exponential but hey
 RADIUS_DIVISOR = average_features//2
-STROKE_DIVISOR = average_features*10
+STROKE_DIVISOR = average_features*8
 
 #matching
 FLANN_INDEX_KDTREE = 0
@@ -61,7 +72,7 @@ h, w = (int(img1.shape[0]), int(img1.shape[1]))
 left_count = [[0 for i in range(h//100+1)] for j in range(w//100+1)] # +1 bc why not
 right_count = [[0 for i in range(h//100+1)] for j in range(w//100+1)]
 
-DELTA_THRESHOLD = 500 # only show matches if above delta (movement) THRESHOLDS
+DELTA_THRESHOLD = 80 # only show matches if above delta (movement) THRESHOLDS
 # show all things in kp1 that aren't matched, kp2 that aren't matched.
 
 # left matches, right matches
@@ -87,25 +98,35 @@ for match in matches:  # It seems matches is capped at 500
 #for item in kp2:
 #    cv2.circle(img3, (int(item.pt[0]+w), int(item.pt[1])), 10, (240, 240, 200), 1)
 
-print("kp1 len", len(kp1))
-for ob in kp1:
-    pt = (int(ob.pt[0]), int(ob.pt[1]))
-    if pt not in left_matches:
-        left_count[pt[0]//100][pt[1]//100] += 1
-    elif pt in left_matches and dist(pt, kp2[left_matches[pt]].pt):
-        left_count[pt[0]//100][pt[1]//100] += 1
-
-for ob in kp2:
-    pt = (int(ob.pt[0]), int(ob.pt[1]))
-    if pt not in right_matches:
-        right_count[(pt[0])//100][(pt[1])//100] += 1
-    elif pt in right_matches and dist(pt, kp1[right_matches[pt]].pt):
-        right_count[(pt[0])//100][(pt[1])//100] += 1
-
 
 
 def rcolor():
     return (np.random.randint(0, 256),np.random.randint(0, 256),np.random.randint(0, 256))
+
+print("matches", len(matches))
+print("left matches", len(left_matches))
+
+print("kp1 len", len(kp1))
+for ob in kp1:
+    pt = ob.pt
+    intpt = tuple(map(int, pt))
+    if pt not in left_matches:
+        #continue # DELETE!!!
+        left_count[intpt[0]//100][intpt[1]//100] += 1
+    elif pt in left_matches and dist(pt, kp2[left_matches[pt].trainIdx].pt) > DELTA_THRESHOLD: # queryidx trainidx switches?
+        #cv2.circle(img3, tuple(map(int, ob.pt)), 20, rcolor(), 15)
+        left_count[intpt[0]//100][intpt[1]//100] += 1
+
+for ob in kp2:
+    #cv2.circle(img3, tuple(map(int, (ob.pt[0]+w, ob.pt[1]))), 20, rcolor(), 15)
+    pt = ob.pt
+    intpt = tuple(map(int, pt))
+    if pt not in right_matches:
+        #continue # DELETE!!!
+        right_count[(intpt[0])//100][(intpt[1])//100] += 1
+    elif pt in right_matches and dist(pt, kp1[right_matches[pt].queryIdx].pt) > DELTA_THRESHOLD:
+        right_count[(intpt[0])//100][(intpt[1])//100] += 1
+
 
 
 for r in range(len(left_count)):

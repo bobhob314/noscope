@@ -42,7 +42,7 @@
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<a class="navbar-brand logo_h" href="index.html"><img src="/static/img/logo.png" width="50%" height="50%" alt=""></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-		</button>
+		</button> --->
 	      </div>
             </nav>
 	  </div>
@@ -67,18 +67,19 @@
           </td>
           <td align="left" valign="top">
             <h1>After</h1>
-            <input type="file" name="fileupload" value="fileupload" id="fileupload">
           </td>
-          <td colspan="2">
-                <button type="button" name="button">Compare</button>
-          </td>
+          <form action="/welcome.php" method=/"post">
+            fileupload1: <input type="file" name="fileupload1" value="fileupload" id="fileupload" />
+            fileupload2:   <input type="file" name="fileupload2" value="fileupload" id="fileupload" />
+            <img src="http://localhost/noscope/static/img/logo.png" width="50%" height="50%" alt="">
+            <input value="Compare" type="submit" />
+          </form>
     	  </tr>
         <tr>
     	    <td valign="top">
             <img src="./../static/img/gallery/portfolio_details.jpg" alt="Before">
           </td>
           <td align="left" valign="top">
-            <input type="file" name="fileupload" value="fileupload" id="fileupload">
           </td>
     	  </tr>
       </tbody>

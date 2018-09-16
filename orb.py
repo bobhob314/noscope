@@ -3,23 +3,37 @@ import cv2
 from matplotlib import pyplot as plt
 import math
 
-MIN_MATCH_COUNT = 50 # TODO SET THIS HIGHER?
+MIN_MATCH_COUNT = 10 # TODO SET THIS HIGHER?
 
 # note img1 and img2 swapped so trainImage and queryImage would
 # be the same as in the tutorial.
 img1 = cv2.imread('2fingers.jpg',0) # queryImage
 img2 = cv2.imread('1fingers.jpg',0) # trainImage
-# Initiate ORB detector
-orb = cv2.ORB_create()
-# find the keypoints with ORB compute the descriptors with ORB
-kp1, des1 = orb.detectAndCompute(img1, None)
-kp2, des2 = orb.detectAndCompute(img2, None)
 
-# create BFMatcher
-bf = cv2.BFMatcher(cv2.NORM_HAMMING, crossCheck=True)
+img1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
+img2 = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)
+
+# Initiate SIFT detector
+sift = cv2.xfeatures2d.SIFT_create()
+
+# find the keypoints with ORB compute the descriptors with ORB
+kp1, des1 = sift.detectAndCompute(img1, None)
+kp2, des2 = sift.detectAndCompute(img2, None)
+
+FLANN_INDEX_KIDTREE = 0
+index_params = dict(algorithm = FLANN_INDEX_KIDTREE, trees = 5) #TODO alter trees
+search_params = dict(checks = 50)
+
+flann = cv2.FlannBasedMatcher(index_params, search_params)
 
 # Match descsriptors
-matches = bf.match(des1, des2)
+all_matches = flann.knnMatch(des1, des2, k=2) #TODO alter k
+'''
+# Good matches (Lowe's ratio test)
+matches = []
+for m,n in matches:
+    if m.distance < 0.7*n.distance:
+        good.append(m)
 
 # Sort them in the order of their distance
 matches = sorted(matches, key = lambda x:x.distance)
@@ -64,7 +78,7 @@ for ob in kp2:
     pt = (int(ob.pt[0]), int(ob.pt[1]))
     if pt not in right_matches:
         right_count[(pt[0])//100][(pt[1])//100] += 1
-
+'''
 
 # GHETTO CODE
 ''' TODO These would be the blues. OR NOT
@@ -80,7 +94,7 @@ for match in matches[:100]:
         cv2.circle(img3, pt1, 200, (240,10,10), 5)
         cv2.circle(img3, pt2, 200, (240,10,10), 5)
 '''
-
+'''
 COUNT_THRESHOLD = 15
 
 for r in range(len(left_count)):
@@ -114,3 +128,4 @@ img5 = cv2.imread('1.jpg',0) # trainImage
 # TODO LET THESE HAVE COLOR. harder than i thought actually.
 
 plt.imshow(img3), plt.show()
+'''
