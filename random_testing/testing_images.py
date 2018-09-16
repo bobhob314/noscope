@@ -38,4 +38,17 @@ def download(filename):
     return grid_fs_file
 
 
+<<<<<<< HEAD
 run(app=FILE_API, host='localhost', port=3000, reloader = True)
+=======
+@FILE_API.get('/')
+def index():
+    return template('index')
+
+@route('/static/<filepath:path>')
+def server_static(filepath):
+    return static_file(filepath, root='/views')
+
+
+run(app=FILE_API, host='localhost', port=3000)
+>>>>>>> origin/CSS_Move

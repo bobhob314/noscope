@@ -1,30 +1,37 @@
-from bottle import Bottle, route, run, error
-from bottle import template, request, get, post, static_file
-import bottle
+import json
 
-bottle.debug(True)
+from bottle import static_file, run, Bottle, request, response, BaseRequest, template, route, get, post
+from gridfs import GridFS
+from pymongo import MongoClient
 
+BaseRequest.MEMFILE_MAX = 1024 * 1024 * 1024
+FILE_API = Bottle()
+MONGO_CLIENT = MongoClient('mongodb://localhost:27017/')
+DB = MONGO_CLIENT['noscope']
+GRID_FS = GridFS(DB)
 
-@route('/static/<filepath:path>')
-def server_static(filepath):
-    return static_file(filepath, root='./static/')
-
-@route('/')
+@FILE_API.get('/')
 def index():
     return template('index')
 
-@route('/welcome.php')
+@FILE_API.get('/static/<filepath:path>')
+def static_server(filepath):
+    return static_file(filepath, root='./static/')
+
+@FILE_API.get('/welcome')
 def welcome():
     return template('welcome.php')
+    # return template('welcome.php')
 
-@route('/hello/<name>')
+@FILE_API.route('/hello/<name>')
 def greet(name='Stranger'):
     return template('Hello {{name}}, how are you?', name=name)
-@route('/hello')
+
+@FILE_API.route('/hello')
 def hello():
     return "Hello World!"
 
-@get('/login') # or @route('/login')
+@FILE_API.get('/login') # or @route('/login')
 def login():
     return static_file('login.html', '.')
 
@@ -40,7 +47,7 @@ def check_login(username, password):
 #     print('{{page}}')
 #     return static_file(filename, root='./website/{{page}}')
 
-@post('/login')
+@FILE_API.post('/login')
 def do_login():
     username = request.forms.get('username')
     password = request.forms.get('password')
@@ -49,8 +56,32 @@ def do_login():
     else:
         return "<p>Login failed.</p>"
 
-@route('/test')
-def test():
-    return static_file('index.html', './website')
 
-run(host='localhost', port=8080, debug=True, reloaded=True)
+@FILE_API.post('/upload')
+def upload():
+    image = request.files.get('image')
+    file_id = GRID_FS.put(image.file, file_name="testimage")
+    # If the file is found in the database then the save
+    # was successful else an error occurred while saving.
+    if GRID_FS.find_one(file_id) is not None:
+        return json.dumps({'status': 'File saved successfully'})
+    else:
+        response.status = 500
+        return json.dumps({'status': 'Error occurred while saving file.'})
+
+@FILE_API.post('/user')
+def upload():
+    username = request.forms.get('username')
+    password = request.forms.get('password')
+    file_id = GRID_FS.put(image.file, file_name="testimage")
+    # If the file is found in the database then the save
+    # was successful else an error occurred while saving.
+    if GRID_FS.find_one(file_id) is not None:
+        return json.dumps({'status': 'File saved successfully'})
+    else:
+        response.status = 500
+        return json.dumps({'status': 'Error occurred while saving file.'})
+
+
+
+run(app=FILE_API, host='localhost', port=3000, reloader=True)
